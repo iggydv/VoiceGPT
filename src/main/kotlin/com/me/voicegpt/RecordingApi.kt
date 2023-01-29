@@ -26,7 +26,7 @@ class RecordingApi @Autowired constructor(
         soundRecorder.stop()
         val wd = WaveDataUtil()
         Thread.sleep(1000)
-        val fileName = wd.saveToFile("SoundClip", AudioFileFormat.Type.WAVE, soundRecorder.audioInputStream)
+        val fileName = wd.saveToFile("recordings/SoundClip", AudioFileFormat.Type.WAVE, soundRecorder.audioInputStream)
         if (fileName.isNotEmpty()) {
             val text = speechToText.transcribe(fileName)
             chatGPT.askChatGPT(text)
